@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A focused applicant pipeline workspace.">
+  <title>Applicanttrack | Candidate pipeline</title>
+  <link rel="stylesheet" href="/tracker.css">
+</head>
+<body>
+  <nav><a class="brand" href="#top"><span class="brand-mark">a</span>Applicant<span>track</span></a><div class="nav-actions"><button class="text-button" id="exportButton">Export CSV</button><label class="import-button">Import CSV<input id="csvInput" type="file" accept=".csv,text/csv"></label><button class="primary" id="addButton">+ Add candidate</button></div></nav>
+  <main id="top">
+    <section class="hero"><div><p class="eyebrow">HIRING WORKSPACE</p><h1>Make every review<br><em>count.</em></h1><p class="hero-copy">A calm, focused home for your applicant pipeline—so good candidates never slip through the cracks.</p></div><div class="hero-note"><span>◌</span><p>Match signals are based on job-related keywords only. Always use your own fair, lawful review process.</p></div></section>
+    <section class="metrics" id="metrics"></section>
+    <section class="workspace"><aside><p class="eyebrow">PIPELINE</p><div id="filters"></div><hr><p class="side-note">Tip: import a CSV with columns like Name, Role, Email, Skills, and Source.</p></aside>
+      <section class="list"><div class="list-top"><div><p class="eyebrow">CANDIDATES</p><h2 id="listTitle">Everyone</h2></div><label class="search">⌕ <input id="search" placeholder="Search candidates" aria-label="Search candidates"></label></div><div id="notice"></div><div class="table-head"><span>Candidate</span><span>Stage</span><span>Match signal</span><span></span></div><div class="rows" id="candidateRows"></div></section>
+    </section>
+  </main>
+  <dialog id="candidateModal"><form method="dialog" class="modal"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">NEW CANDIDATE</p><h2>Add a candidate</h2><p>Paste job-related resume notes to create a transparent match signal.</p><div class="form-grid"><label>Name<input id="name" placeholder="Full name"></label><label>Role<input id="role" placeholder="e.g. Frontend Engineer"></label><label>Email<input id="email" type="email" placeholder="name@example.com"></label><label>Source<select id="source"><option>Direct</option><option>LinkedIn</option><option>Indeed</option><option>Referral</option><option>Portfolio</option></select></label></div><label>Job-related resume notes<textarea id="resume" placeholder="Skills, relevant experience, and role-specific work…"></textarea></label><div class="modal-footer"><span>Signal preview: <b id="scorePreview">42%</b></span><button class="primary" id="saveCandidate" value="default">Add to pipeline</button></div></form></dialog>
+  <dialog id="profileModal"><section class="drawer"><button class="close" id="profileClose" aria-label="Close">×</button><div id="profileContent"></div></section></dialog>
+  <script src="/tracker.js"></script>
+</body>
+</html>
