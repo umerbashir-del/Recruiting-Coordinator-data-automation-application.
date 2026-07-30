@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>if(localStorage.getItem('applicant-tracker-theme')==='night')document.documentElement.classList.add('night');</script>
+  <style>html.night body{background:#12352b}</style>
+  <title>Applicant Reviewer</title>
+  <link rel="stylesheet" href="/tracker.css">
+</head>
+<body>
+  <main class="shell">
+    <header><button class="mark" id="refreshPage" type="button" aria-label="Refresh page">a</button><div><p class="eyebrow">APPLICANT TRACKER</p><h1>Applicant Reviewer</h1></div></header>
+    <section class="intro"><div><p class="eyebrow">JOB-RELATED REVIEW AID</p><h2>Read the details that matter for the role.</h2><p>Upload a CSV to view each applicant’s name, applied position, and a job-related recommendation for human review.</p></div></section>
+    <section class="intro-actions"><div class="drop-hint large-drop" id="dropHint"><span class="icon" aria-hidden="true">⇩</span><span><b>Drag a CSV, ZIP, or folder here</b><small>It stays on this computer.</small></span></div><div class="action-buttons"><label class="upload" id="uploadZone"><span class="icon" aria-hidden="true">↑</span><span>Choose CSV</span><input id="csvInput" type="file" accept=".csv,.zip,text/csv,application/zip"></label><button id="runTest" class="test-button"><span class="icon" aria-hidden="true">↻</span> Run included test CSV</button><button id="downloadText" class="download" disabled><span class="icon" aria-hidden="true">↓</span> Download text file</button></div></section>
+    <section class="privacy"><b>Fair review:</b> race and gender fields are ignored and never used in the recommendation.</section>
+    <section class="scan-summary" id="scanSummary" hidden aria-live="polite"></section>
+    <section class="dashboard" id="dashboard" hidden aria-live="polite"></section>
+    <section class="workspace"><aside><p class="eyebrow">APPLICANTS</p><div id="applicantList" class="applicant-list"><p class="empty">Upload a CSV to begin.</p></div></aside><section class="result" id="result" aria-live="polite"><p class="eyebrow">RECOMMENDATION</p><h2>Choose an applicant</h2><p>The message will use only their name, applied position, and job-related information supplied in the CSV.</p></section></section>
+    <section class="format"><p class="eyebrow">CSV FORMAT</p><p>Use columns such as <code>Name</code>, <code>Role</code> or <code>Job Title</code>, <code>Skills</code>, <code>Experience</code>, and <code>Resume</code>. Extra columns are ignored.</p></section>
+  </main>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to night mode">☾ Night</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="/tracker.js"></script>
+</body>
+</html>
