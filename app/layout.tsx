@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Applicanttrack | Candidate pipeline",
-  description: "A focused, fair candidate pipeline workspace.",
+  title: "Applicant Reviewer",
+  description: "A focused applicant-review workspace.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

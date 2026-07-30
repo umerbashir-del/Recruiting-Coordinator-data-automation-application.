@@ -3,21 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A focused applicant pipeline workspace.">
-  <title>Applicanttrack | Candidate pipeline</title>
+  <script>if(localStorage.getItem('applicant-tracker-theme')==='night')document.documentElement.classList.add('night');</script>
+  <style>html.night body{background:#12352b}</style>
+  <title>Applicant Reviewer</title>
   <link rel="stylesheet" href="/tracker.css">
 </head>
 <body>
-  <nav><a class="brand" href="#top"><span class="brand-mark">a</span>Applicant<span>track</span></a><div class="nav-actions"><button class="text-button" id="exportButton">Export CSV</button><label class="import-button">Import CSV<input id="csvInput" type="file" accept=".csv,text/csv"></label><button class="primary" id="addButton">+ Add candidate</button></div></nav>
-  <main id="top">
-    <section class="hero"><div><p class="eyebrow">HIRING WORKSPACE</p><h1>Make every review<br><em>count.</em></h1><p class="hero-copy">A calm, focused home for your applicant pipeline—so good candidates never slip through the cracks.</p></div><div class="hero-note"><span>◌</span><p>Match signals are based on job-related keywords only. Always use your own fair, lawful review process.</p></div></section>
-    <section class="metrics" id="metrics"></section>
-    <section class="workspace"><aside><p class="eyebrow">PIPELINE</p><div id="filters"></div><hr><p class="side-note">Tip: import a CSV with columns like Name, Role, Email, Skills, and Source.</p></aside>
-      <section class="list"><div class="list-top"><div><p class="eyebrow">CANDIDATES</p><h2 id="listTitle">Everyone</h2></div><label class="search">⌕ <input id="search" placeholder="Search candidates" aria-label="Search candidates"></label></div><div id="notice"></div><div class="table-head"><span>Candidate</span><span>Stage</span><span>Match signal</span><span></span></div><div class="rows" id="candidateRows"></div></section>
-    </section>
+  <main class="shell">
+    <header><button class="mark" id="refreshPage" type="button" aria-label="Refresh page">a</button><div><p class="eyebrow">APPLICANT TRACKER</p><h1>Applicant Reviewer</h1></div></header>
+    <section class="intro"><div><p class="eyebrow">JOB-RELATED REVIEW AID</p><h2>Read the details that matter for the role.</h2><p>Upload a CSV to view each applicant’s name, applied position, and a job-related recommendation for human review.</p></div></section>
+    <section class="intro-actions"><div class="drop-hint large-drop" id="dropHint"><span class="icon" aria-hidden="true">⇩</span><span><b>Drag a CSV, ZIP, or folder here</b><small>It stays on this computer.</small></span></div><div class="action-buttons"><label class="upload" id="uploadZone"><span class="icon" aria-hidden="true">↑</span><span>Choose CSV</span><input id="csvInput" type="file" accept=".csv,.zip,text/csv,application/zip"></label><button id="runTest" class="test-button"><span class="icon" aria-hidden="true">↻</span> Run included test CSV</button><button id="downloadText" class="download" disabled><span class="icon" aria-hidden="true">↓</span> Download text file</button></div></section>
+    <section class="privacy"><b>Fair review:</b> race and gender fields are ignored and never used in the recommendation.</section>
+    <section class="scan-summary" id="scanSummary" hidden aria-live="polite"></section>
+    <section class="dashboard" id="dashboard" hidden aria-live="polite"></section>
+    <section class="workspace"><aside><p class="eyebrow">APPLICANTS</p><div id="applicantList" class="applicant-list"><p class="empty">Upload a CSV to begin.</p></div></aside><section class="result" id="result" aria-live="polite"><p class="eyebrow">RECOMMENDATION</p><h2>Choose an applicant</h2><p>The message will use only their name, applied position, and job-related information supplied in the CSV.</p></section></section>
+    <section class="format"><p class="eyebrow">CSV FORMAT</p><p>Use columns such as <code>Name</code>, <code>Role</code> or <code>Job Title</code>, <code>Skills</code>, <code>Experience</code>, and <code>Resume</code>. Extra columns are ignored.</p></section>
   </main>
-  <dialog id="candidateModal"><form method="dialog" class="modal"><button class="close" value="cancel" aria-label="Close">×</button><p class="eyebrow">NEW CANDIDATE</p><h2>Add a candidate</h2><p>Paste job-related resume notes to create a transparent match signal.</p><div class="form-grid"><label>Name<input id="name" placeholder="Full name"></label><label>Role<input id="role" placeholder="e.g. Frontend Engineer"></label><label>Email<input id="email" type="email" placeholder="name@example.com"></label><label>Source<select id="source"><option>Direct</option><option>LinkedIn</option><option>Indeed</option><option>Referral</option><option>Portfolio</option></select></label></div><label>Job-related resume notes<textarea id="resume" placeholder="Skills, relevant experience, and role-specific work…"></textarea></label><div class="modal-footer"><span>Signal preview: <b id="scorePreview">42%</b></span><button class="primary" id="saveCandidate" value="default">Add to pipeline</button></div></form></dialog>
-  <dialog id="profileModal"><section class="drawer"><button class="close" id="profileClose" aria-label="Close">×</button><div id="profileContent"></div></section></dialog>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to night mode">☾ Night</button>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="/tracker.js"></script>
 </body>
 </html>
